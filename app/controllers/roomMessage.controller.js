@@ -8,12 +8,15 @@ exports.create = (req, res) => {
       message: "Content can not be empty!"
     });
   }
-
+  console.log(req.body)
   // Create a RoomMessage
   const message = new RoomMessage({
-    email: req.body.email,
-    name: req.body.name,
-    active: req.body.active
+    room: req.body.room,
+    message: req.body.message,
+    sender: req.body.sender,
+    isGroupChat: req.body.isGroupChat,
+    imageDb: req.body.imageDb,
+    packageName: req.body.packageName,
   });
 
   // Save RoomMessage in the database

@@ -2,14 +2,12 @@ const sql = require("./db.js");
 
 // constructor
 const RoomMessage = function(roomMessage) {
-  this.messageId = roomMessage.messageId;
   this.room = roomMessage.room;
   this.message = roomMessage.message;
   this.sender = roomMessage.sender;
-  this.isGroupChat = roomMessage.isGroupChat;
-  this.imageDb = roomMessage.imageDb;
-  this.packageName = roomMessage.packageName;
-  this.createAt = roomMessage.createAt;
+  this.is_group_chat = roomMessage.isGroupChat;
+  this.image_db = roomMessage.imageDb;
+  this.package_name = roomMessage.packageName;
 };
 
 RoomMessage.create = (newRoomMessage, result) => {
