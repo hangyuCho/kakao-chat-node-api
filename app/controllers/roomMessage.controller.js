@@ -30,6 +30,35 @@ exports.create = (req, res) => {
   });
 };
 
+exports.logging = (req, res) => {
+  // Validate request
+  if (!req.query) {
+    res.status(400).send({
+      message: "Content can not be empty!"
+    });
+  }
+  console.log(req.query)
+  // Create a RoomMessage
+  const message = new RoomMessage({
+    room: req.query.room,
+    message: req.query.message,
+    sender: req.query.sender,
+    isGroupChat: req.query.isGroupChat,
+    imageDb: req.query.imageDb,
+    packageName: req.query.packageName,
+  });
+
+  // Save RoomMessage in the database
+  RoomMessage.create(message, (err, data) => {
+    if (err)
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while creating the RoomMessage."
+      });
+    else res.send(data);
+  });
+};
+
 // Retrieve all RoomMessages from the database.
 exports.findAll = (req, res) => {
   RoomMessage.getAll((err, data) => {

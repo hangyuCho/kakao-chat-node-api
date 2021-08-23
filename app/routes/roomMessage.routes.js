@@ -3,6 +3,7 @@ module.exports = app => {
 
   // Create a new RoomMessage
   app.post("/roomMessage", roomMessage.create);
+  app.get("/logging", roomMessage.logging);
 
   // Retrieve all roomMessage
   app.get("/roomMessage", roomMessage.findAll);
