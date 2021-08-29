@@ -1,11 +1,14 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const dotenv = require("dotenv");
 
 const app = express();
 
+dotenv.config();
+
 var corsOptions = {
-  origin: "http://localhost:8080"
+  origin: process.env.APP_FRONT_PATH
 };
 
 app.use(cors(corsOptions));
